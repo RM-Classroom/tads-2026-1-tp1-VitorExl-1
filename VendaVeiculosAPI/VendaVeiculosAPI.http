@@ -1,0 +1,6 @@
+@VendaVeiculosAPI_HostAddress = http://localhost:5134
+
+GET {{VendaVeiculosAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
