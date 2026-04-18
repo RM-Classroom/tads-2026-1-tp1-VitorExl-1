@@ -1,4 +1,6 @@
-﻿namespace VendaVeiculosAPI.Models
+﻿using System.Text.Json.Serialization;
+
+namespace VendaVeiculosAPI.Models
 {
     public class Veiculo
     {
@@ -9,6 +11,7 @@
 
         //fk
         public int FabricanteId { get; set; }
+        [JsonIgnore]
         public Fabricante? Fabricante { get; set; }
     }
 }
