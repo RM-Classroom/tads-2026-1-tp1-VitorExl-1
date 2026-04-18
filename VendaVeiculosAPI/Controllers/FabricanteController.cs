@@ -24,14 +24,18 @@ namespace VendaVeiculosAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Fabricante>>> GetFabricantes()
         {
-            return await _context.Fabricantes.ToListAsync();
+            return await _context.Fabricantes
+                     .Include(f => f.Veiculos) 
+                     .ToListAsync();
         }
 
         // GET: api/Fabricante/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Fabricante>> GetFabricante(int id)
         {
-            var fabricante = await _context.Fabricantes.FindAsync(id);
+            var fabricante = await _context.Fabricantes
+                               .Include(f => f.Veiculos) 
+                               .FirstOrDefaultAsync(f => f.Id == id);
 
             if (fabricante == null)
             {
