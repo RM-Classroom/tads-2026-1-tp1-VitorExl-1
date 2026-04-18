@@ -34,7 +34,9 @@ namespace VendaVeiculosAPI.Controllers
                 .Select(a => new {
                     a.Id,
                     Cliente = a.Cliente.Nome,
+                    ClienteId = a.Cliente.Id,
                     Veiculo = a.Veiculo.Modelo,
+                    VeiculoId = a.Veiculo.Id,
                     a.DataInicio,
                     a.DataDevolucao,
                     a.ValorTotal
@@ -82,12 +84,8 @@ namespace VendaVeiculosAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAluguel(int id, Aluguel aluguel)
         {
-            if (id != aluguel.Id)
-            {
-                return BadRequest("Erro: ID do aluguel não corresponde ao ID fornecido.");
-            }
+            aluguel.Id = id;
 
-            // validar a data de devolução, não podendo ser menor que a data do inicio do lauguel
             if (aluguel.DataDevolucao.HasValue && aluguel.DataDevolucao < aluguel.DataInicio)
             {
                 return BadRequest("Erro: A data de devolução não pode ser anterior à data de início do aluguel.");
@@ -111,7 +109,7 @@ namespace VendaVeiculosAPI.Controllers
                 }
             }
 
-            return NoContent();
+            return NoContent(); // Retorno 204: Alterado com sucesso!
         }
 
         // POST: api/Aluguels

@@ -33,9 +33,11 @@ namespace VendaVeiculosAPI.Controllers
                 .Select(v => new {
                     IdVenda = v.Id,
                     Data = v.DataVenda,
-                    Valor = v.ValorVenda,
-                    Carro = v.Veiculo.Modelo, // Dado que vem do Join
-                    Comprador = v.Cliente.Nome, // Dado que vem do Join
+                    ValorVenda = v.ValorVenda,
+                    Veiculo = v.Veiculo.Modelo, // Dado que vem do Join
+                    VeiculoId = v.VeiculoId,
+                    Cliente = v.Cliente.Nome, // Dado que vem do Join
+                    ClienteId = v.ClienteId,
                     CpfComprador = v.Cliente.CPF
                 })
                 .ToListAsync();
@@ -86,12 +88,10 @@ namespace VendaVeiculosAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutVenda(int id, Venda venda)
         {
-            if (id != venda.Id)
-            {
-                return BadRequest();
-            }
+            // Força o ID do objeto a ser o mesmo da URL 
+            venda.Id = id;
 
-            // Verifica se o cliente e o carro existem na atualização
+            // Verifica se o cliente e o carro existem na atualização 
             var clienteExiste = await _context.Clientes.AnyAsync(c => c.Id == venda.ClienteId);
             var veiculoExiste = await _context.Veiculos.AnyAsync(v => v.Id == venda.VeiculoId);
 
@@ -123,7 +123,7 @@ namespace VendaVeiculosAPI.Controllers
                 }
             }
 
-            return NoContent();
+            return NoContent(); 
         }
 
         // POST: api/Venda

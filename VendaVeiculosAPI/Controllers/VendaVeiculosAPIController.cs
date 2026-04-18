@@ -26,7 +26,7 @@ namespace VendaVeiculosAPI.Controllers
                 .Select(v => new {
                     v.Id,
                     Data = v.DataVenda,
-                    Valor = v.ValorVenda,
+                    ValorVenda = v.ValorVenda,
                     Carro = v.Veiculo.Modelo,
                     Comprador = v.Cliente.Nome
                 })
