@@ -7,4 +7,4 @@ Como parte do processo de garantia de qualidade, elaborei uma lista detalhada de
 
 Você pode conferir o documento completo no link abaixo:
 
-👉 [Lista de Validação de Defeitos (PDF)](COLOQUE_O_LINK_AQUI)
+👉 [Lista de Validação de Defeitos (PDF)](./Documentação%20Testes.pdf)
