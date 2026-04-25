@@ -8,7 +8,7 @@ Repositório dedicado ao desenvolvimento e documentação de uma API utilizando 
 
 ### 📽️ Acesso ao Vídeo com Apresentação no Formato Pitch
 
-👉 https://www.youtube.com/watch?v=HpULsLXVdL4
+👉 (Video de Apresentação do Sistema em Formato Pitch)https://www.youtube.com/watch?v=HpULsLXVdL4
 
 ### 📋 Validação de Defeitos
 Como parte do processo de garantia de qualidade, elaborei uma lista detalhada de validação de defeitos encontrados e corrigidos durante o projeto.
