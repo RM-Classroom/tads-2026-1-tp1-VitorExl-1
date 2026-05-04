@@ -2,7 +2,7 @@
 
 Repositório dedicado ao desenvolvimento e documentação de uma API utilizando Swagger.
 
-### 🗋Relatório Acadêmico Desenvolvido Durante o Projeto
+### 🗋 Relatório Acadêmico Desenvolvido Durante o Projeto
 
 👉 [Artigo do Relatório Acadêmico com Link de Apresentação](./Relatorio_Academico_Artigo.pdf)
 
