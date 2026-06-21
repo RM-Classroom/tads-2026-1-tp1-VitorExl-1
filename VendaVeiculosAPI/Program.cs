@@ -1,5 +1,5 @@
-
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using VendaVeiculosAPI.Models;
 
 namespace VendaVeiculosAPI
@@ -15,7 +15,7 @@ namespace VendaVeiculosAPI
             builder.Services.AddControllers();
             builder.Services.AddDbContext<VendaVeiculosContext>(opt =>
                 opt.UseInMemoryDatabase("VendaVeiculosDb")
-                );
+            );
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
             builder.Services.AddSwaggerGen();
@@ -27,13 +27,29 @@ namespace VendaVeiculosAPI
             {
                 app.MapOpenApi();
                 app.UseSwagger();
-                app.UseSwaggerUI(); 
+                app.UseSwaggerUI();
+            }
+
+            var siblingFrontendPath = Path.GetFullPath(
+                Path.Combine(app.Environment.ContentRootPath, "..", "Frontend")
+            );
+            var localFrontendPath = Path.Combine(app.Environment.ContentRootPath, "Frontend");
+            var frontendPath = Directory.Exists(siblingFrontendPath)
+                ? siblingFrontendPath
+                : localFrontendPath;
+
+            if (Directory.Exists(frontendPath))
+            {
+                var frontendProvider = new PhysicalFileProvider(frontendPath);
+
+                app.UseDefaultFiles(new DefaultFilesOptions { FileProvider = frontendProvider });
+
+                app.UseStaticFiles(new StaticFileOptions { FileProvider = frontendProvider });
             }
 
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

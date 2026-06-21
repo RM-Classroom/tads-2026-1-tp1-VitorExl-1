@@ -5,7 +5,7 @@ namespace VendaVeiculosAPI.Models
 {
     public class VendaVeiculosContext : DbContext
     {
-        public VendaVeiculosContext(DbContextOptions<VendaVeiculosContext> options) 
+        public VendaVeiculosContext(DbContextOptions<VendaVeiculosContext> options)
             : base(options) { }
 
         public DbSet<Veiculo> Veiculos { get; set; }

@@ -39,6 +39,9 @@ namespace VendaVeiculosAPI.Controllers
                     VeiculoId = a.Veiculo.Id,
                     a.DataInicio,
                     a.DataDevolucao,
+                    a.KmInicial,
+                    a.KmFinal,
+                    a.ValorDiaria,
                     a.ValorTotal
                 }).ToListAsync());
         }
@@ -70,6 +73,8 @@ namespace VendaVeiculosAPI.Controllers
                     ModeloVeiculo = a.Veiculo.Modelo,
                     a.DataInicio,
                     a.DataDevolucao,
+                    a.KmInicial,
+                    a.KmFinal,
                     a.ValorDiaria,
                     a.ValorTotal
                 }).FirstOrDefaultAsync();

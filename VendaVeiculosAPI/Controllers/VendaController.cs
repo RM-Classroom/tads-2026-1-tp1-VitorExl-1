@@ -68,6 +68,8 @@ namespace VendaVeiculosAPI.Controllers
                 .Where(v => v.Id == id)
                 .Select(v => new {
                     v.Id,
+                    v.ClienteId,
+                    v.VeiculoId,
                     v.DataVenda,
                     v.ValorVenda,
                     ModeloVeiculo = v.Veiculo.Modelo, // Join em Veiculo
