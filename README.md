@@ -21,4 +21,4 @@ Você pode conferir o documento completo no link abaixo:
 
 Link para o protótipo no Figma:
 
-👉 [Lista FIGMA](https://www.figma.com/design/K0jccdHnQfsGs0ab8F79NF/Vitor-s-Starter-team-library?node-id=0-1&p=f)
+👉 [Link FIGMA](https://www.figma.com/design/K0jccdHnQfsGs0ab8F79NF/Vitor-s-Starter-team-library?node-id=0-1&p=f)
