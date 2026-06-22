@@ -16,3 +16,7 @@ Como parte do processo de garantia de qualidade, elaborei uma lista detalhada de
 Você pode conferir o documento completo no link abaixo:
 
 👉 [Lista de Validação de Defeitos (PDF)](./Documentação%20Testes.pdf)
+
+Link para o protótipo no Figma:
+
+👉 [Lista FIGMA](https://www.figma.com/design/K0jccdHnQfsGs0ab8F79NF/Vitor-s-Starter-team-library?node-id=0-1&p=f)
