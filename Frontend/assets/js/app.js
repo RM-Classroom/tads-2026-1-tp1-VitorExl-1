@@ -221,6 +221,7 @@ document.addEventListener("click", async (event) => {
 });
 
 async function init() {
+    initModalListeners();
     await renderCurrentView();
 
     try {
@@ -229,6 +230,35 @@ async function init() {
             await renderCurrentView();
         }
     } catch {
+    }
+}
+
+function initModalListeners() {
+    const editForm = document.getElementById("edit-form");
+    if (editForm) {
+        editForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const entityKey = event.currentTarget.dataset.entityKey;
+            if (entityKey) {
+                await saveEditEntity(entityKey);
+            }
+        });
+    }
+
+    const editModal = document.getElementById("edit-modal");
+    if (editModal) {
+        editModal.addEventListener("hidden.bs.modal", () => {
+            const modalForm = document.getElementById("edit-form");
+            const modalFields = document.getElementById("edit-form-fields");
+            if (modalForm) {
+                modalForm.reset();
+                modalForm.dataset.recordId = "";
+                modalForm.dataset.entityKey = "";
+            }
+            if (modalFields) {
+                modalFields.innerHTML = "";
+            }
+        });
     }
 }
 
@@ -444,29 +474,6 @@ function wireEntityPage(entityKey) {
         });
     }
 
-    const editForm = document.getElementById("edit-form");
-    if (editForm) {
-        editForm.addEventListener("submit", async (event) => {
-            event.preventDefault();
-            await saveEditEntity(entityKey);
-        });
-    }
-
-    const editModal = document.getElementById("edit-modal");
-    if (editModal) {
-        editModal.addEventListener("hidden.bs.modal", () => {
-            const modalForm = document.getElementById("edit-form");
-            const modalFields = document.getElementById("edit-form-fields");
-            if (modalForm) {
-                modalForm.reset();
-                modalForm.dataset.recordId = "";
-                modalForm.dataset.entityKey = "";
-            }
-            if (modalFields) {
-                modalFields.innerHTML = "";
-            }
-        });
-    }
 }
 
 function renderFields(container, fields, entityKey, isForm, options = {}) {
